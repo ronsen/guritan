@@ -10,18 +10,18 @@
 	<title>Guritan</title>
 </svelte:head>
 
-{#if data.blog}
+{#if data.posts}
 	<div class="overflow-x-auto">
 		<table class="table">
 			<thead>
-				<tr>
+				<tr class="uppercase">
 					<th>Title</th>
 					<th class="w-[200px]">Published</th>
 					<th class="w-10">&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
-				{#each data.posts as post}
+				{#each data.posts?.items as post}
 					<tr>
 						<td><a href="/posts/{post.id}">{post.title}</a></td>
 						<td>{post.published}</td>

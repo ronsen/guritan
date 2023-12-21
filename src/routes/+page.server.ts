@@ -1,12 +1,11 @@
 import type { PageServerLoad } from './$types';
-import { google } from "googleapis";
+import { blogger_v3, google } from "googleapis";
 import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, BLOG_ID } from '$env/static/private';
 
 export const load = (async ({ cookies }) => {
 	const refreshToken = cookies.get('refresh_token');
 
-	let blog: Blog | null = null;
-	let posts: Post[] | null = [];
+	let posts: blogger_v3.Schema$PostList | null = null;
 
 	if (refreshToken) {
 		const oauth2client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
@@ -17,38 +16,9 @@ export const load = (async ({ cookies }) => {
 			auth: oauth2client
 		});
 
-		const blogResponse = await blogger.blogs.get({ blogId: BLOG_ID });
-
-		if (blogResponse.status == 200) {
-			blog = {
-				kind: blogResponse.data.kind as string,
-				id: blogResponse.data.id as string,
-				name: blogResponse.data.name as string,
-				description: blogResponse.data.description as string,
-				url: blogResponse.data.url as string,
-				pages: { totalItems: blogResponse.data.pages?.totalItems as number},
-				posts: { totalItems: blogResponse.data.posts?.totalItems as number},
-			}
-		}
-
-		const postsResponse = await blogger.posts.list({ blogId: BLOG_ID });
-
-		if (postsResponse.status == 200) {
-			postsResponse.data.items?.forEach((item) => {
-				const post: Post = {
-					kind: item.kind as string,
-					id: item.id as string,
-					published: item.published as string,
-					updated: item.updated as string,
-					url: item.url as string,
-					title: item.title as string,
-					content: item.content as string,
-				}
-
-				posts?.push(post);
-			});
-		}
+		const response = await blogger.posts.list({ blogId: BLOG_ID });
+		posts = response.data;
 	}
 
-	return { blog, posts };
+	return { posts };
 }) satisfies PageServerLoad;
