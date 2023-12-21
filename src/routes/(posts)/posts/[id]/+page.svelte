@@ -9,7 +9,9 @@
 </svelte:head>
 
 {#if data.post}
-	<h1 class="font-bold text-2xl mb-6">{data.post?.title}</h1>
+	<h1 class="font-bold text-2xl mb-6">
+		<a href="/posts/{data.post?.id}">{data.post?.title}</a>
+	</h1>
 
 	<div class="prose max-w-none">
 		{@html data.post?.content}

@@ -1,36 +1,11 @@
 import type { Actions, PageServerLoad } from './$types';
 import { fail, redirect } from '@sveltejs/kit';
 import { blogger_v3, google } from "googleapis";
-import { NodeHtmlMarkdown } from 'node-html-markdown';
 import { marked } from "marked";
 import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, BLOG_ID } from '$env/static/private';
 
-export const load = (async ({ params, cookies }) => {
-	const refreshToken = cookies.get('refresh_token');
-
-	let post: blogger_v3.Schema$Post | null = null;
-
-	if (refreshToken) {
-		const oauth2client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
-		oauth2client.setCredentials({ refresh_token: refreshToken });
-
-		const blogger = google.blogger({
-			version: 'v3',
-			auth: oauth2client
-		});
-
-		const response = await blogger.posts.get({ blogId: BLOG_ID, postId: params.id });
-		post = response.data;
-	}
-
-	const nhm = new NodeHtmlMarkdown();
-
-	return {
-		post: {
-			...post,
-			'contentToMarkdown': post?.content ? nhm.translate(post!.content as string) : ''
-		}
-	};
+export const load = (async () => {
+	return {};
 }) satisfies PageServerLoad;
 
 export const actions = {
@@ -64,9 +39,8 @@ export const actions = {
 				auth: oauth2client
 			});
 
-			await blogger.posts.patch({
+			await blogger.posts.insert({
 				blogId: BLOG_ID, postId: params.id, requestBody: {
-					id: params.id,
 					title,
 					content: contentToHtml,
 				}
