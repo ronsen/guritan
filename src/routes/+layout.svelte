@@ -35,6 +35,6 @@
 	</div>
 </nav>
 
-<main class="container mx-auto px-2 py-10">
+<main class="container md:w-3/5 mx-auto px-6 py-10">
 <slot />
 </main>
