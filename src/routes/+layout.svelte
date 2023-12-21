@@ -1,10 +1,22 @@
 <script>
 	import { page, navigating } from "$app/stores";
+	import NProgress from "nprogress";
 
 	import Fa from "svelte-fa";
 	import { faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
 
 	import "../app.css";
+	import 'nprogress/nprogress.css';
+
+	NProgress.configure({ minimum: 0.16 });
+    $: {
+        if ($navigating) {
+            NProgress.start();
+        }
+        if (!$navigating) {
+            NProgress.done();
+        }
+    }
 </script>
 
 <nav class="navbar bg-base-300">

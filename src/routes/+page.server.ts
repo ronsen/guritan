@@ -17,11 +17,7 @@ export const load = (async ({ cookies }) => {
 			auth: oauth2client
 		});
 
-		const params = {
-			blogId: BLOG_ID
-		};
-
-		const blogResponse = await blogger.blogs.get({ blogId: params.blogId });
+		const blogResponse = await blogger.blogs.get({ blogId: BLOG_ID });
 
 		if (blogResponse.status == 200) {
 			blog = {
@@ -35,7 +31,7 @@ export const load = (async ({ cookies }) => {
 			}
 		}
 
-		const postsResponse = await blogger.posts.list({ blogId: params.blogId });
+		const postsResponse = await blogger.posts.list({ blogId: BLOG_ID });
 
 		if (postsResponse.status == 200) {
 			postsResponse.data.items?.forEach((item) => {
