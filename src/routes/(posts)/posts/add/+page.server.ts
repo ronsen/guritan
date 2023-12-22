@@ -31,14 +31,12 @@ export const actions = {
 			});
 		}
 
-		const contentToHtml = marked.parse(content);
-
 		const blogger = Blogger.getInstance(refreshToken);
 
 		await blogger.posts.insert({
 			blogId, postId: params.id, requestBody: {
 				title,
-				content: contentToHtml,
+				content: marked.parse(content),
 			}
 		});
 

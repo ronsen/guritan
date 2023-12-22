@@ -49,17 +49,13 @@ export const actions = {
 			});
 		}
 
-		const contentToHtml = marked.parse(content);
-
-
-
 		const blogger = Blogger.getInstance(refreshToken);
 
 		await blogger.posts.patch({
 			blogId, postId: params.id, requestBody: {
 				id: params.id,
 				title,
-				content: contentToHtml,
+				content: marked.parse(content),
 			}
 		});
 

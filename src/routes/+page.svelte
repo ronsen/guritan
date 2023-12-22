@@ -2,7 +2,7 @@
 	import type { PageServerData } from "./$types";
 	import Fa from "svelte-fa";
 	import { faPencil } from "@fortawesome/free-solid-svg-icons";
-    import Alert from "$lib/components/alert.svelte";
+	import Alert from "$lib/components/alert.svelte";
 
 	export let data: PageServerData;
 </script>
