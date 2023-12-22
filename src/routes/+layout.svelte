@@ -3,7 +3,7 @@
 	import NProgress from "nprogress";
 
 	import Fa from "svelte-fa";
-	import { faAdd, faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
+	import { faAdd, faGear, faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
 
 	import "../app.css";
 	import 'nprogress/nprogress.css';
@@ -27,6 +27,7 @@
 		{#if $page.data.auth}
 			<div class="inline-flex items-center gap-3">
 				<a href="/posts/add" class="btn btn-ghost"><Fa icon={faAdd} /></a>
+				<a href="/settings"><Fa icon={faGear} /></a>
 				<form method="post" action="/logout">
 					<button type="submit" class="btn btn-ghost"><Fa icon={faSignOut} /></button>
 				</form>

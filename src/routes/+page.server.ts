@@ -1,24 +1,17 @@
 import type { PageServerLoad } from './$types';
-import { blogger_v3, google } from "googleapis";
-import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, BLOG_ID } from '$env/static/private';
+import Blogger from '$lib';
+import { redirect } from '@sveltejs/kit';
 
 export const load = (async ({ cookies }) => {
 	const refreshToken = cookies.get('refresh_token');
+	const blogId = cookies.get('blog_id');
 
-	let posts: blogger_v3.Schema$PostList | null = null;
+	if (!refreshToken) redirect(302, '/login');
+	if (!blogId) redirect(302, '/settings');
 
-	if (refreshToken) {
-		const oauth2client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
-		oauth2client.setCredentials({ refresh_token: refreshToken });
-
-		const blogger = google.blogger({
-			version: 'v3',
-			auth: oauth2client
-		});
-
-		const response = await blogger.posts.list({ blogId: BLOG_ID });
-		posts = response.data;
-	}
+	const blogger = Blogger.getInstance(refreshToken);
+	const response = await blogger.posts.list({ blogId });
+	const posts  = response.data;
 
 	return { posts };
 }) satisfies PageServerLoad;
