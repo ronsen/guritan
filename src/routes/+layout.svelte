@@ -27,7 +27,7 @@
 		{#if $page.data.auth}
 			<div class="inline-flex items-center gap-3">
 				<a href="/posts/add" class="btn btn-ghost"><Fa icon={faAdd} /></a>
-				<a href="/settings"><Fa icon={faGear} /></a>
+				<a href="/settings" class="btn btn-ghost"><Fa icon={faGear} /></a>
 				<form method="post" action="/logout">
 					<button type="submit" class="btn btn-ghost"><Fa icon={faSignOut} /></button>
 				</form>

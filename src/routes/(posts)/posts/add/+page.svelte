@@ -19,7 +19,7 @@
 		<input type="text" name="title" placeholder="Title" class="input input-bordered w-full">
 	</div>
 	<div class="mb-3">
-		<textarea name="content" class="textarea textarea-bordered w-full h-80"></textarea>
+		<textarea name="content" class="textarea textarea-bordered w-full h-40 font-mono"></textarea>
 	</div>
 	<button type="submit" class="btn btn-primary w-full">Save</button>
 </form>
