@@ -4,20 +4,17 @@
     import Alert from '$lib/components/alert.svelte';
 
 	import Fa from "svelte-fa";
-	import { faHome, faPencil } from "@fortawesome/free-solid-svg-icons";
+	import { faHome } from "@fortawesome/free-solid-svg-icons";
     
     export let data: PageServerData;
 	export let form: ActionData;
 </script>
 
-<svelte:head>
-	<title>{data.post?.title}</title>
-</svelte:head>
-
 {#if data.post}
 	<div class="text-sm breadcrumbs mb-4">
 		<ul>
 			<li><a href="/"><Fa icon={faHome} /></a></li>
+			<li><a href="/posts">Posts</a></li>
 			<li><a href="/posts/{data.post?.id}/edit">{data.post?.title}</a></li>
 		</ul>
 	</div>

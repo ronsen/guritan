@@ -3,41 +3,56 @@
 	import NProgress from "nprogress";
 
 	import Fa from "svelte-fa";
-	import { faAdd, faGear, faSignIn, faSignOut } from "@fortawesome/free-solid-svg-icons";
+	import {
+		faGear,
+		faSignIn,
+		faSignOut,
+	} from "@fortawesome/free-solid-svg-icons";
 
 	import "../app.css";
-	import 'nprogress/nprogress.css';
+	import "nprogress/nprogress.css";
 
 	NProgress.configure({ minimum: 0.16 });
-    $: {
-        if ($navigating) {
-            NProgress.start();
-        }
-        if (!$navigating) {
-            NProgress.done();
-        }
-    }
+	$: {
+		if ($navigating) {
+			NProgress.start();
+		}
+		if (!$navigating) {
+			NProgress.done();
+		}
+	}
 </script>
 
+<svelte:head>
+	<title>Guritan</title>
+</svelte:head>
+
 <nav class="navbar bg-base-300">
-	<div class="flex-1">
+	<div class="navbar-start">
 		<a href="/" class="btn btn-ghost text-xl">Guritan</a>
 	</div>
-	<div class="flex-none items-center">
+
+	{#if $page.data.auth}
+		<div class="navbar-center gap-3">
+			<a href="/posts">Posts</a>
+			<a href="/pages">Pages</a>
+		</div>
+	{/if}
+
+	<div class="navbar-end">
 		{#if $page.data.auth}
 			<div class="inline-flex items-center gap-3">
-				<a href="/posts/add" class="btn btn-ghost"><Fa icon={faAdd} /></a>
 				<a href="/settings" class="btn btn-ghost"><Fa icon={faGear} /></a>
 				<form method="post" action="/logout">
 					<button type="submit" class="btn btn-ghost"><Fa icon={faSignOut} /></button>
 				</form>
 			</div>
 		{:else}
-			<a href="/oauth"class="btn btn-ghost"><Fa icon={faSignIn} /></a>
+			<a href="/oauth" class="btn btn-ghost"><Fa icon={faSignIn} /></a>
 		{/if}
 	</div>
 </nav>
 
 <main class="container md:w-3/5 mx-auto px-6 py-10">
-<slot />
+	<slot />
 </main>

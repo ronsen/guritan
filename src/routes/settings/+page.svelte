@@ -4,10 +4,6 @@
     export let data: PageServerData;
 </script>
 
-<svelte:head>
-	<title>Settings</title>
-</svelte:head>
-
 <form method="post">
 	<div class="mb-3">
 		<input type="number" name="blog" value="{data.blogId}" placeholder="Blog ID" class="input input-bordered w-full">

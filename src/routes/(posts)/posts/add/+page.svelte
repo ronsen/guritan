@@ -1,14 +1,20 @@
 <script lang="ts">
-    import type { ActionData } from './$types';
+	import type { ActionData } from './$types';
 	import { enhance } from "$app/forms";
-    import Alert from '$lib/components/alert.svelte';
-    
+	import Alert from '$lib/components/alert.svelte';
+	import Fa from "svelte-fa";
+	import { faHome } from "@fortawesome/free-solid-svg-icons";
+
 	export let form: ActionData;
 </script>
 
-<svelte:head>
-	<title>Add New Post</title>
-</svelte:head>
+<div class="text-sm breadcrumbs mb-4">
+	<ul>
+		<li><a href="/"><Fa icon={faHome} /></a></li>
+		<li><a href="/posts">Posts</a></li>
+		<li><a href="/posts/add">Add New Post</a></li>
+	</ul>
+</div>
 
 {#if form?.error}
     <Alert>{@html form?.message}</Alert>
