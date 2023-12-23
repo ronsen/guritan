@@ -1,10 +1,21 @@
 <script lang="ts">
     import type { PageServerData } from './$types';
+    import { enhance } from '$app/forms';
+	
+	import Fa from "svelte-fa";
+	import { faHome } from "@fortawesome/free-solid-svg-icons";
     
     export let data: PageServerData;
 </script>
 
-<form method="post">
+<div class="breadcrumbs text-sm uppercase mb-4">
+	<ul>
+		<li><a href="/"><Fa icon={faHome} /></a></li>
+		<li><a href="/settings">Settings</a></li>
+	</ul>
+</div>
+
+<form method="post" use:enhance>
 	<div class="mb-3">
 		<input type="number" name="blog" value="{data.blogId}" placeholder="Blog ID" class="input input-bordered w-full">
 		<div class="label">

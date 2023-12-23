@@ -22,7 +22,7 @@
 </script>
 
 {#if data.post}
-	<div class="text-sm breadcrumbs mb-4">
+	<div class="breadcrumbs text-sm uppercase mb-4">
 		<ul>
 			<li><a href="/"><Fa icon={faHome} /></a></li>
 			<li><a href="/posts">Posts</a></li>

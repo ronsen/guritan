@@ -25,7 +25,7 @@
 
 
 <div class="flex justify-between mb-4">
-	<div class="text-sm breadcrumbs">
+	<div class="breadcrumbs text-sm uppercase">
 		<ul>
 			<li><a href="/"><Fa icon={faHome} /></a></li>
 			<li><a href="/pages">Pages</a></li>
