@@ -8,7 +8,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	if (path.startsWith('/posts') || path.startsWith('/pages')) {
 		if (!refreshToken) redirect(303, '/');
-		if (!blogId) redirect(303, '/');
+		if (!blogId) redirect(303, '/settings');
 	}
 
 	if (refreshToken) {
