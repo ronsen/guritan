@@ -8,7 +8,7 @@ export const load = (async () => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-	default: async ({ request, cookies, params }) => {
+	default: async ({ request, cookies }) => {
 		const refreshToken = cookies.get('refresh_token');
 		const blogId = cookies.get('blog_id');
 
@@ -40,6 +40,6 @@ export const actions = {
 			}
 		});
 
-		redirect(302, '/');
+		redirect(302, '/posts');
 	}
 } satisfies Actions;

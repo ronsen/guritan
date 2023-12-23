@@ -1,12 +1,12 @@
 <script lang="ts">
-    import type { ActionData, PageServerData } from './$types';
+	import type { ActionData, PageServerData } from './$types';
 	import { enhance } from "$app/forms";
-    import Alert from '$lib/components/alert.svelte';
+	import Alert from '$lib/components/alert.svelte';
 
 	import Fa from "svelte-fa";
 	import { faHome } from "@fortawesome/free-solid-svg-icons";
-    
-    export let data: PageServerData;
+
+	export let data: PageServerData;
 	export let form: ActionData;
 </script>
 

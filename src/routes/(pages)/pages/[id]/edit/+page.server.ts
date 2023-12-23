@@ -12,15 +12,15 @@ export const load = (async ({ params, cookies }) => {
 	if (!blogId) redirect(302, '/settings');
 
 	const blogger = Blogger.getInstance(refreshToken);
-	const response = await blogger.posts.get({ blogId, postId: params.id });
-	const post = response.data;
+	const response = await blogger.pages.get({ blogId, pageId: params.id });
+	const page = response.data;
 
 	const nhm = new NodeHtmlMarkdown();
 
 	return {
-		post: {
-			...post,
-			'contentToMarkdown': post?.content ? nhm.translate(post!.content as string) : ''
+		page: {
+			...page,
+			'contentToMarkdown': page?.content ? nhm.translate(page!.content as string) : ''
 		}
 	};
 }) satisfies PageServerLoad;
@@ -51,14 +51,14 @@ export const actions = {
 
 		const blogger = Blogger.getInstance(refreshToken);
 
-		await blogger.posts.patch({
-			blogId, postId: params.id, requestBody: {
+		await blogger.pages.patch({
+			blogId, pageId: params.id, requestBody: {
 				id: params.id,
 				title,
 				content: marked.parse(content),
 			}
 		});
 
-		redirect(302, '/posts');
+		redirect(302, '/pages');
 	}
 } satisfies Actions;

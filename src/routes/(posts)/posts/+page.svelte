@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageServerData } from "./$types";
 	import Alert from "$lib/components/alert.svelte";
+	
 	import Fa from "svelte-fa";
 	import { 
 		faHome, 
@@ -11,18 +12,18 @@
 	export let data: PageServerData;
 </script>
 
-{#if data.posts}
-	<div class="flex justify-between mb-4">
-		<div class="text-sm breadcrumbs">
-			<ul>
-				<li><a href="/"><Fa icon={faHome} /></a></li>
-				<li><a href="/posts">Posts</a></li>
-			</ul>
-		</div>
-
-		<a href="/posts/add" class="btn btn-ghost"><Fa icon={faAdd} /></a>
+<div class="flex justify-between mb-4">
+	<div class="text-sm breadcrumbs">
+		<ul>
+			<li><a href="/"><Fa icon={faHome} /></a></li>
+			<li><a href="/posts">Posts</a></li>
+		</ul>
 	</div>
 
+	<a href="/posts/add" class="btn btn-ghost"><Fa icon={faAdd} /></a>
+</div>
+
+{#if data.posts}
 	{#if !data.posts?.items}
 		<Alert>No posts found.</Alert>
 	{:else}

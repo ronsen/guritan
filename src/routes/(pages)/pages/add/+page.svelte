@@ -1,19 +1,19 @@
 <script lang="ts">
 	import type { ActionData } from './$types';
 	import { enhance } from "$app/forms";
-	import Alert from '$lib/components/alert.svelte';
-
+	import Alert from "$lib/components/alert.svelte";
+	
 	import Fa from "svelte-fa";
 	import { faHome } from "@fortawesome/free-solid-svg-icons";
 
-	export let form: ActionData;
+	export let form: ActionData;;
 </script>
 
 <div class="text-sm breadcrumbs mb-4">
 	<ul>
 		<li><a href="/"><Fa icon={faHome} /></a></li>
-		<li><a href="/posts">Posts</a></li>
-		<li><a href="/posts/add">Add New Post</a></li>
+		<li><a href="/pages">Pages</a></li>
+		<li><a href="/pages/add">Add New Page</a></li>
 	</ul>
 </div>
 

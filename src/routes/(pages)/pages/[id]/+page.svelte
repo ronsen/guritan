@@ -6,28 +6,28 @@
 	export let data: PageServerData;
 </script>
 
-{#if data.post}
+{#if data.page}
 	<div class="text-sm breadcrumbs mb-4">
 		<ul>
 			<li><a href="/"><Fa icon={faHome} /></a></li>
-			<li><a href="/posts">Posts</a></li>
-			<li><a href="/posts/{data.post?.id}">{data.post?.title}</a></li>
+			<li><a href="/pages">Pages</a></li>
+			<li><a href="/pages/{data.page?.id}">{data.page?.title}</a></li>
 		</ul>
 	</div>
 
 	<div class="flex justify-between items-center mb-4">
 		<h1 class="font-bold text-2xl">
-			<a href="/posts/{data.post?.id}">{data.post?.title}</a>
+			<a href="/pages/{data.page?.id}">{data.page?.title}</a>
 		</h1>
 
-		<a href="/posts/{data.post?.id}/edit"><Fa icon={faPencil} /></a>
+		<a href="/pages/{data.page?.id}/edit"><Fa icon={faPencil} /></a>
 	</div>
 
 	<div class="text-sm mb-4">
-		{data.post?.published}
+		{data.page?.published}
 	</div>
 
 	<div class="prose max-w-none">
-		{@html data.post?.content}
+		{@html data.page?.content}
 	</div>
 {/if}
