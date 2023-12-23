@@ -31,12 +31,24 @@
 				value="{data.post?.title}"
 				class="input input-bordered w-full">
 		</div>
+
 		<div class="mb-3">
 			<textarea
 				name="content"
 				class="textarea textarea-bordered w-full h-80 font-mono"
 			>{data.post?.contentToMarkdown}</textarea>
 		</div>
+
+		<div class="mb-3">
+			<input type="text"
+				name="labels"
+				value="{data.post?.labels}"
+				class="input input-bordered w-full">
+			<div class="label">
+				<div class="label-text-alt">Seperated by comma</div>
+			</div>
+		</div>
+
 		<button type="submit" class="btn btn-primary w-full">Update</button>
 	</form>
 {/if}

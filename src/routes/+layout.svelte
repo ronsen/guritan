@@ -34,8 +34,8 @@
 
 	{#if $page.data.auth}
 		<div class="navbar-center gap-3">
-			<a href="/posts">Posts</a>
-			<a href="/pages">Pages</a>
+			<a href="/posts" class="btn btn-ghost btn-sm">Posts</a>
+			<a href="/pages" class="btn btn-ghost btn-sm">Pages</a>
 		</div>
 	{/if}
 
@@ -53,6 +53,6 @@
 	</div>
 </nav>
 
-<main class="container md:w-3/5 mx-auto px-6 py-10">
+<main class="container mx-auto px-6 py-10">
 	<slot />
 </main>

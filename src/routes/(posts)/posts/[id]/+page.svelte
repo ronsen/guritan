@@ -45,9 +45,17 @@
 		{data.post?.published}
 	</div>
 
-	<div class="prose max-w-none">
+	<div class="prose max-w-none mb-4">
 		{@html data.post?.content}
 	</div>
+
+	{#if data.post?.labels}
+		<div class="flex justify-center gap-3">
+			{#each data.post?.labels as label}
+				<div class="badge">{label}</div>
+			{/each}
+		</div>
+	{/if}
 
 	<dialog bind:this={dialog} class="modal">
 		<form {action} method="post" class="modal-box" on:submit|preventDefault={() => dialog.close()} use:enhance>

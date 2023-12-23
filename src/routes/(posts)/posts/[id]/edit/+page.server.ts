@@ -20,14 +20,14 @@ export const load = (async ({ params, cookies }) => {
 	return {
 		post: {
 			...post,
-			'contentToMarkdown': post?.content ? nhm.translate(post!.content as string) : ''
+			'contentToMarkdown': post?.content ? nhm.translate(post!.content as string) : '',
 		}
 	};
 }) satisfies PageServerLoad;
 
 export const actions = {
 	default: async ({ request, cookies, params }) => {
-		const { title, content } = Object.fromEntries(await request.formData()) as Record<string, string>;
+		const { title, content, labels } = Object.fromEntries(await request.formData()) as Record<string, string>;
 
 		if (title.length == 0) {
 			return fail(400, {
@@ -52,6 +52,7 @@ export const actions = {
 				id: params.id,
 				title,
 				content: marked.parse(content),
+				labels: labels.split(',')
 			}
 		});
 
