@@ -9,12 +9,6 @@ export const load = (async () => {
 
 export const actions = {
 	default: async ({ request, cookies }) => {
-		const refreshToken = cookies.get('refresh_token');
-		const blogId = cookies.get('blog_id');
-
-		if (!refreshToken) redirect(302, '/login');
-		if (!blogId) redirect(302, '/settings');
-
 		const { title, content } = Object.fromEntries(await request.formData()) as Record<string, string>;
 
 		if (title.length == 0) {
@@ -31,8 +25,10 @@ export const actions = {
 			});
 		}
 
-		const blogger = Blogger.getInstance(refreshToken);
-
+		const refreshToken = cookies.get('refresh_token');
+		const blogId = cookies.get('blog_id');
+		const blogger = Blogger.getInstance(refreshToken!);
+		
 		await blogger.pages.insert({
 			blogId, requestBody: {
 				title,

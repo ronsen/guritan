@@ -8,10 +8,7 @@ export const load = (async ({ params, cookies }) => {
 	const refreshToken = cookies.get('refresh_token');
 	const blogId = cookies.get('blog_id');
 
-	if (!refreshToken) redirect(302, '/login');
-	if (!blogId) redirect(302, '/settings');
-
-	const blogger = Blogger.getInstance(refreshToken);
+	const blogger = Blogger.getInstance(refreshToken!);
 	const response = await blogger.pages.get({ blogId, pageId: params.id });
 	const page = response.data;
 
@@ -27,12 +24,6 @@ export const load = (async ({ params, cookies }) => {
 
 export const actions = {
 	default: async ({ request, cookies, params }) => {
-		const refreshToken = cookies.get('refresh_token');
-		const blogId = cookies.get('blog_id');
-
-		if (!refreshToken) redirect(302, '/login');
-		if (!blogId) redirect(302, '/settings');
-
 		const { title, content } = Object.fromEntries(await request.formData()) as Record<string, string>;
 
 		if (title.length == 0) {
@@ -49,7 +40,9 @@ export const actions = {
 			});
 		}
 
-		const blogger = Blogger.getInstance(refreshToken);
+		const refreshToken = cookies.get('refresh_token');
+		const blogId = cookies.get('blog_id');
+		const blogger = Blogger.getInstance(refreshToken!);
 
 		await blogger.pages.patch({
 			blogId, pageId: params.id, requestBody: {
