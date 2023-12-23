@@ -1,5 +1,4 @@
 import type { PageServerLoad } from './$types';
-import { redirect } from '@sveltejs/kit';
 import Blogger from '$lib';
 
 export const load = (async ({ cookies }) => {
