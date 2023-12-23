@@ -23,7 +23,7 @@
 		<Alert>{@html form?.message}</Alert>
 	{/if}
 
-	<form method="page" use:enhance>
+	<form method="post" use:enhance>
 		<div class="mb-3">
 			<input type="text" name="title" value="{data.page?.title}" class="input input-bordered w-full">
 		</div>
