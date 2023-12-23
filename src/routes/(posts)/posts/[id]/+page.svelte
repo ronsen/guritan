@@ -42,7 +42,7 @@
 	</div>
 
 	<div class="text-sm mb-4">
-		{data.post?.published}
+		{data.post?.publishedAt}
 	</div>
 
 	<div class="prose max-w-none mb-4">

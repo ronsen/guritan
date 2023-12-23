@@ -42,7 +42,7 @@
 	</div>
 
 	<div class="text-sm mb-4">
-		{data.page?.published}
+		{data.page?.publishedAt}
 	</div>
 
 	<div class="prose max-w-none">

@@ -9,5 +9,12 @@ export const load = (async ({ params, cookies }) => {
 	const response = await blogger.pages.get({ blogId, pageId: params.id });
 	const page = response.data;
 
-	return { page };
+	const publishedAt = new Date(Date.parse(page.published as string));
+
+	return {
+		page: {
+			...page,
+			publishedAt: publishedAt.toLocaleDateString() + ' ' + publishedAt.toLocaleTimeString()
+		}
+	};
 }) satisfies PageServerLoad;

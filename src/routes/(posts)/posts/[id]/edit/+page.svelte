@@ -42,7 +42,7 @@
 		<div class="mb-3">
 			<input type="text"
 				name="labels"
-				value="{data.post?.labels}"
+				value="{data.post?.labels ? data.post?.labels : ''}"
 				class="input input-bordered w-full">
 			<div class="label">
 				<div class="label-text-alt">Seperated by comma</div>

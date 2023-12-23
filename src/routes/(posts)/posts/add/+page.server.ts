@@ -33,7 +33,7 @@ export const actions = {
 			blogId, requestBody: {
 				title,
 				content: marked.parse(content),
-				labels: labels.split(',')
+				labels: labels.length > 0 ? labels.split(',') : []
 			}
 		});
 
