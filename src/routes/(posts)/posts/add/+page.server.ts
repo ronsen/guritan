@@ -9,7 +9,7 @@ export const load = (async () => {
 
 export const actions = {
 	default: async ({ request, cookies }) => {
-		const { title, content, label } = Object.fromEntries(await request.formData()) as Record<string, string>;
+		const { title, content, labels } = Object.fromEntries(await request.formData()) as Record<string, string>;
 
 		if (title.length == 0) {
 			return fail(400, {
