@@ -37,7 +37,7 @@
 
 {#if data.pages}
 	{#if !data.pages?.items}
-		<Alert>No Pages found.</Alert>
+		<Alert>No pages found.</Alert>
 	{:else}
 		<div class="overflow-x-auto">
 			<table class="table">

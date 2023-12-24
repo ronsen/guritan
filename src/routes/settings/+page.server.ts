@@ -24,6 +24,6 @@ export const actions = {
 		});
 
 
-		redirect(302, '/');
+		redirect(302, '/settings');
 	}
 }
