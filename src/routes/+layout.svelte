@@ -24,7 +24,7 @@
 </script>
 
 <svelte:head>
-	<title>Guritan</title>
+	<title>Guritan - Markdown Editor for Blogger</title>
 </svelte:head>
 
 <nav class="navbar bg-base-300">
