@@ -5,7 +5,8 @@
 
 	import Fa from "svelte-fa";
 	import { 
-		faHome, 
+		faHome,
+		faLink,
 		faPencil,
 		faTrash
 	} from "@fortawesome/free-solid-svg-icons";
@@ -36,6 +37,7 @@
 		</h1>
 
 		<div class="inline-flex gap-3">
+			<a href="{data.page?.url}" target="_blank"><Fa icon={faLink} /></a>
 			<a href="/pages/{data.page?.id}/edit"><Fa icon={faPencil} /></a>
 			<button on:click={() => destroy(data.page)}><Fa icon={faTrash }/></button>
 		</div>

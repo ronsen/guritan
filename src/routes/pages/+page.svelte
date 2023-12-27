@@ -8,6 +8,7 @@
 	import {
 		faHome,
 		faAdd,
+		faLink,
 		faPencil,
 		faTrash
 	} from "@fortawesome/free-solid-svg-icons";
@@ -53,6 +54,7 @@
 							<td><a href="/pages/{page.id}">{page.title}</a></td>
 							<td>
 								<div class="inline-flex gap-3">
+									<a href="{page.url}" target="_blank"><Fa icon={faLink} /></a>
 									<a href="/pages/{page.id}/edit"><Fa icon={faPencil} /></a>
 									<button on:click={() => destroy(page)}><Fa icon={faTrash }/></button>
 								</div>

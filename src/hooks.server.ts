@@ -12,6 +12,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	if (refreshToken) {
+		if (path == '/')
+			redirect(302, '/posts');
+
 		event.locals.auth = true;
 	}
 

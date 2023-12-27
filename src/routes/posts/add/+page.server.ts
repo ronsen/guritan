@@ -1,11 +1,7 @@
-import type { Actions, PageServerLoad } from './$types';
+import type { Actions } from './$types';
 import { fail, redirect } from '@sveltejs/kit';
 import { marked } from "marked";
 import Blogger from '$lib';
-
-export const load = (async () => {
-	return {};
-}) satisfies PageServerLoad;
 
 export const actions = {
 	default: async ({ request, cookies }) => {
@@ -25,17 +21,29 @@ export const actions = {
 			});
 		}
 
-		const refreshToken = cookies.get('refresh_token');
-		const blogId = cookies.get('blog_id');
-		const blogger = Blogger.getInstance(refreshToken!);
+		try {
+			const refreshToken = cookies.get('refresh_token');
+			const blogId = cookies.get('blog_id');
+			const blogger = Blogger.getInstance(refreshToken!);
 
-		await blogger.posts.insert({
-			blogId, requestBody: {
-				title,
-				content: marked.parse(content),
-				labels: labels.length > 0 ? labels.split(',') : []
+			await blogger.posts.insert({
+				blogId, fetchBody: false, fetchImages: false, requestBody: {
+					title,
+					content: marked.parse(content),
+					labels: labels.length > 0 ? labels.split(',') : []
+				}
+			});
+		} catch (e: unknown) {
+			let message = '';
+
+			if (typeof e === 'string') {
+				message = e;
+			} else if (e instanceof Error) {
+				message = e.message;
 			}
-		});
+
+			return fail(400, { error: true, message });
+		}
 
 		redirect(302, '/posts');
 	}

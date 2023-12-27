@@ -44,13 +44,25 @@ export const actions = {
 		const blogId = cookies.get('blog_id');
 		const blogger = Blogger.getInstance(refreshToken!);
 
-		await blogger.pages.patch({
-			blogId, pageId: params.id, requestBody: {
-				id: params.id,
-				title,
-				content: marked.parse(content),
+		try {
+			await blogger.pages.patch({
+				blogId, pageId: params.id, requestBody: {
+					id: params.id,
+					title,
+					content: marked.parse(content),
+				}
+			});
+		} catch (e: unknown) {
+			let message = '';
+
+			if (typeof e === 'string') {
+				message = e;
+			} else if (e instanceof Error) {
+				message = e.message;
 			}
-		});
+
+			return fail(400, { error: true, message });
+		}
 
 		redirect(302, '/pages');
 	}

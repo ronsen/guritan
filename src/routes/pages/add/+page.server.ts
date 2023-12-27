@@ -25,16 +25,28 @@ export const actions = {
 			});
 		}
 
-		const refreshToken = cookies.get('refresh_token');
-		const blogId = cookies.get('blog_id');
-		const blogger = Blogger.getInstance(refreshToken!);
-		
-		await blogger.pages.insert({
-			blogId, requestBody: {
-				title,
-				content: marked.parse(content),
+		try {
+			const refreshToken = cookies.get('refresh_token');
+			const blogId = cookies.get('blog_id');
+			const blogger = Blogger.getInstance(refreshToken!);
+			
+			await blogger.pages.insert({
+				blogId, isDraft: false, requestBody: {
+					title,
+					content: marked.parse(content),
+				}
+			});
+		} catch (e: unknown) {
+			let message = '';
+
+			if (typeof e === 'string') {
+				message = e;
+			} else if (e instanceof Error) {
+				message = e.message;
 			}
-		});
+
+			return fail(400, { error: true, message });
+		}
 
 		redirect(302, '/pages');
 	}
