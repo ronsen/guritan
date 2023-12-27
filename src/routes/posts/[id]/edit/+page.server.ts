@@ -46,10 +46,12 @@ export const actions = {
 
 		try {
 			await blogger.posts.patch({
-				blogId, postId: params.id, fetchBody: false, fetchImages: false, requestBody: {
+				blogId,
+				postId: params.id,
+				requestBody: {
 					id: params.id,
 					title,
-					content: marked.parse(content),
+					content: await marked.parse(content),
 					labels: labels.split(',')
 				}
 			});

@@ -27,9 +27,10 @@ export const actions = {
 			const blogger = Blogger.getInstance(refreshToken!);
 
 			await blogger.posts.insert({
-				blogId, fetchBody: false, fetchImages: false, requestBody: {
+				blogId, 
+				requestBody: {
 					title,
-					content: marked.parse(content),
+					content: await marked.parse(content),
 					labels: labels.length > 0 ? labels.split(',') : []
 				}
 			});

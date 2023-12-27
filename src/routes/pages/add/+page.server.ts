@@ -31,9 +31,11 @@ export const actions = {
 			const blogger = Blogger.getInstance(refreshToken!);
 			
 			await blogger.pages.insert({
-				blogId, isDraft: false, requestBody: {
+				blogId, 
+				isDraft: false, 
+				requestBody: {
 					title,
-					content: marked.parse(content),
+					content: await marked.parse(content),
 				}
 			});
 		} catch (e: unknown) {

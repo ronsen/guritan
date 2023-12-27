@@ -46,10 +46,12 @@ export const actions = {
 
 		try {
 			await blogger.pages.patch({
-				blogId, pageId: params.id, requestBody: {
+				blogId,
+				pageId: params.id,
+				requestBody: {
 					id: params.id,
 					title,
-					content: marked.parse(content),
+					content: await marked.parse(content),
 				}
 			});
 		} catch (e: unknown) {
