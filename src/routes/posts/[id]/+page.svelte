@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
-	import { enhance } from "$app/forms";
-	import type { blogger_v3 } from "googleapis";
+	import Delete from "$lib/components/delete.svelte";
 
 	import Fa from "svelte-fa";
 	import { 
@@ -10,14 +9,6 @@
 		faPencil,
 		faTrash
 	} from "@fortawesome/free-solid-svg-icons";
-
-	let dialog: HTMLDialogElement;
-	let action: string = '';
-
-	function destroy(post: blogger_v3.Schema$Post) {
-		action = `/posts/${post.id}/delete`;
-        dialog.show();
-	}
 
 	export let data: PageServerData;
 </script>
@@ -39,7 +30,7 @@
 		<div class="inline-flex gap-3">
 			<a href="{data.post?.url}" target="_blank"><Fa icon={faLink} /></a>
 			<a href="/posts/{data.post?.id}/edit"><Fa icon={faPencil} /></a>
-			<button on:click={() => destroy(data.post)}><Fa icon={faTrash }/></button>
+			<Delete action='/posts/{data.post?.id}/delete' message='Delete this post?' />
 		</div>
 	</div>
 
@@ -58,15 +49,4 @@
 			{/each}
 		</div>
 	{/if}
-
-	<dialog bind:this={dialog} class="modal">
-		<form {action} method="post" class="modal-box" on:submit|preventDefault={() => dialog.close()} use:enhance>
-			<h3 class="font-bold text-lg">Confirm</h3>
-			<p class="py-4">Delete this post?</p>
-			<div class="modal-action">
-				<button class="btn btn-neutral btn-sm" on:click|preventDefault={() => dialog.close()}>No</button>
-				<button type="submit" class="btn btn-error btn-sm">Yes</button>
-			</div>
-		</form>
-	</dialog>
 {/if}
