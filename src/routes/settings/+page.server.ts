@@ -2,7 +2,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ cookies }) => {
-	const blogId = cookies.get('blog_id');
+	const blogId = cookies.get('blog_id') ?? '';
 
     return { blogId };
 }) satisfies PageServerLoad;
