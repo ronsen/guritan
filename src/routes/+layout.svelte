@@ -53,6 +53,6 @@
 	</div>
 </nav>
 
-<main class="container mx-auto px-6 py-10">
+<main class="container md:w-[800px] mx-auto px-6 py-10">
 	<slot />
 </main>
