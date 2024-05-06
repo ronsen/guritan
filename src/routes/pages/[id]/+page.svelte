@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { PageServerData } from './$types';
+	import type { PageServerData } from "./$types";
 	import type { blogger_v3 } from "googleapis";
 	import Delete from "$lib/components/delete.svelte";
 
 	import Fa from "svelte-fa";
-	import { 
+	import {
 		faHome,
 		faLink,
-		faPencil
+		faPencil,
 	} from "@fortawesome/free-solid-svg-icons";
 
 	export let data: PageServerData;
@@ -28,9 +28,12 @@
 		</h1>
 
 		<div class="inline-flex gap-3">
-			<a href="{data.page?.url}" target="_blank"><Fa icon={faLink} /></a>
+			<a href={data.page?.url} target="_blank"><Fa icon={faLink} /></a>
 			<a href="/pages/{data.page?.id}/edit"><Fa icon={faPencil} /></a>
-			<Delete action='/pages/{data.page.id}/delete' message='Delete this page?' />
+			<Delete
+				action="/pages/{data.page.id}/delete"
+				message="Delete this page?"
+			/>
 		</div>
 	</div>
 

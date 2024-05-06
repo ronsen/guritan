@@ -4,7 +4,7 @@ import type { PageServerLoad } from './$types';
 export const load = (async ({ cookies }) => {
 	const blogId = cookies.get('blog_id') ?? '';
 
-    return { blogId };
+	return { blogId };
 }) satisfies PageServerLoad;
 
 export const actions = {

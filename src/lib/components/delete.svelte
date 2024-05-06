@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { enhance } from "$app/forms";
-	
+	import { enhance } from "$app/forms";
+
 	import Fa from "svelte-fa";
 	import { faTrash } from "@fortawesome/free-solid-svg-icons";
 

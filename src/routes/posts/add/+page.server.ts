@@ -27,7 +27,7 @@ export const actions = {
 			const blogger = Blogger.getInstance(refreshToken!);
 
 			await blogger.posts.insert({
-				blogId, 
+				blogId,
 				requestBody: {
 					title,
 					content: await marked.parse(content),

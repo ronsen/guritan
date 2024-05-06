@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { ActionData } from './$types';
+	import type { ActionData } from "./$types";
 	import { enhance } from "$app/forms";
-	import Alert from '$lib/components/alert.svelte';
+	import Alert from "$lib/components/alert.svelte";
 
 	import Fa from "svelte-fa";
 	import { faHome } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +18,7 @@
 </div>
 
 {#if form?.error}
-    <Alert>{@html form?.message}</Alert>
+	<Alert>{@html form?.message}</Alert>
 {/if}
 
 <form method="post" use:enhance>

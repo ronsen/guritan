@@ -9,5 +9,5 @@ export const load = (async ({ cookies }) => {
 	const response = await blogger.pages.list({ blogId });
 	const pages = response.data;
 
-    return { pages };
+	return { pages };
 }) satisfies PageServerLoad;

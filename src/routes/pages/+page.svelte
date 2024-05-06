@@ -2,18 +2,17 @@
 	import type { PageServerData } from "./$types";
 	import Alert from "$lib/components/alert.svelte";
 	import Delete from "$lib/components/delete.svelte";
-	
+
 	import Fa from "svelte-fa";
 	import {
 		faHome,
 		faAdd,
 		faLink,
-		faPencil
+		faPencil,
 	} from "@fortawesome/free-solid-svg-icons";
 
 	export let data: PageServerData;
 </script>
-
 
 <div class="flex justify-between mb-4">
 	<div class="breadcrumbs text-sm uppercase">
@@ -44,9 +43,12 @@
 							<td><a href="/pages/{page.id}">{page.title}</a></td>
 							<td>
 								<div class="inline-flex gap-3">
-									<a href="{page.url}" target="_blank"><Fa icon={faLink} /></a>
+									<a href={page.url} target="_blank"><Fa icon={faLink} /></a>
 									<a href="/pages/{page.id}/edit"><Fa icon={faPencil} /></a>
-									<Delete action='/pages/{page.id}/delete' message='Delete this page: {page.title}?' />
+									<Delete
+										action="/pages/{page.id}/delete"
+										message="Delete this page: {page.title}?"
+									/>
 								</div>
 							</td>
 						</tr>

@@ -4,7 +4,7 @@ import { marked } from "marked";
 import Blogger from '$lib';
 
 export const load = (async () => {
-    return {};
+	return {};
 }) satisfies PageServerLoad;
 
 export const actions = {
@@ -29,10 +29,10 @@ export const actions = {
 			const refreshToken = cookies.get('refresh_token');
 			const blogId = cookies.get('blog_id');
 			const blogger = Blogger.getInstance(refreshToken!);
-			
+
 			await blogger.pages.insert({
-				blogId, 
-				isDraft: false, 
+				blogId,
+				isDraft: false,
 				requestBody: {
 					title,
 					content: await marked.parse(content),
