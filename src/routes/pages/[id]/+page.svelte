@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { PageServerData } from "./$types";
-	import type { blogger_v3 } from "googleapis";
 	import Delete from "$lib/components/delete.svelte";
 
 	import Fa from "svelte-fa";
@@ -10,7 +9,7 @@
 		faPencil,
 	} from "@fortawesome/free-solid-svg-icons";
 
-	export let data: PageServerData;
+	let { data }: { data: PageServerData } = $props();
 </script>
 
 {#if data.page}

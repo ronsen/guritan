@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+	import type {Snippet} from "svelte";
 	import { page, navigating } from "$app/stores";
 	import NProgress from "nprogress";
 
@@ -12,15 +13,17 @@
 	import "../app.css";
 	import "nprogress/nprogress.css";
 
+	let { children }: { children: Snippet } = $props();
+
 	NProgress.configure({ minimum: 0.16 });
-	$: {
+
+	$effect(() => {
 		if ($navigating) {
 			NProgress.start();
-		}
-		if (!$navigating) {
+		} else {
 			NProgress.done();
 		}
-	}
+	})
 </script>
 
 <svelte:head>
@@ -54,5 +57,5 @@
 </nav>
 
 <main class="container md:w-[800px] mx-auto px-6 py-10">
-	<slot />
+	{@render children()}
 </main>

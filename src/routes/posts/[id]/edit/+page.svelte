@@ -6,8 +6,7 @@
 	import Fa from "svelte-fa";
 	import { faHome } from "@fortawesome/free-solid-svg-icons";
 
-	export let data: PageServerData;
-	export let form: ActionData;
+	let { data, form }: { data: PageServerData; form: ActionData } = $props();
 </script>
 
 {#if data.post}

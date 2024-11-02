@@ -10,7 +10,7 @@
 		faTrash,
 	} from "@fortawesome/free-solid-svg-icons";
 
-	export let data: PageServerData;
+	let { data }: { data: PageServerData } = $props();
 </script>
 
 {#if data.post}

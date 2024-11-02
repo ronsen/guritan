@@ -11,7 +11,7 @@
 		faAdd,
 	} from "@fortawesome/free-solid-svg-icons";
 
-	export let data: PageServerData;
+	let { data }: { data: PageServerData } = $props();
 </script>
 
 <div class="flex justify-between mb-4">
