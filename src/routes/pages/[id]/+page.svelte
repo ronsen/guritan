@@ -40,7 +40,7 @@
 		{data.page?.publishedAt}
 	</div>
 
-	<div class="prose text-white/90 max-w-none">
+	<div class="prose prose-invert max-w-none">
 		{@html data.page?.content}
 	</div>
 {/if}

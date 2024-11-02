@@ -41,7 +41,7 @@
 		{data.post?.publishedAt}
 	</div>
 
-	<div class="prose text-white/90 max-w-none mb-4">
+	<div class="prose prose-invert max-w-none mb-4">
 		{@html data.post?.content}
 	</div>
 
