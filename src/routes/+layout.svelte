@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Snippet} from "svelte";
+	import type { Snippet } from "svelte";
 	import { page, navigating } from "$app/stores";
 	import NProgress from "nprogress";
 

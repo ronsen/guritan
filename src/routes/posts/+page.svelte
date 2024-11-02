@@ -26,7 +26,7 @@
 
 {#if data.posts}
 	{#if !data.posts?.items}
-		<Alert>No posts found.</Alert>
+		<Alert>Empty.</Alert>
 	{:else}
 		<div class="overflow-x-auto">
 			<table class="table-auto w-full">
