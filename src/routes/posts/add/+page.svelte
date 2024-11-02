@@ -9,13 +9,13 @@
 	let { form }: { form: ActionData } = $props();
 </script>
 
-<div class="breadcrumbs text-sm uppercase mb-4">
-	<ul>
-		<li><a href="/"><Fa icon={faHome} /></a></li>
-		<li><a href="/posts">Posts</a></li>
-		<li><a href="/posts/add">Add New Post</a></li>
-	</ul>
-</div>
+<ul class="inline-flex items-baseline gap-3 text-xs uppercase mb-4">
+	<li><a href="/"><Fa icon={faHome} /></a></li>
+	<li>/</li>
+	<li><a href="/posts">Posts</a></li>
+	<li>/</li>
+	<li><a href="/posts/add">Add New Post</a></li>
+</ul>
 
 {#if form?.error}
 	<Alert>{@html form?.message}</Alert>
@@ -23,13 +23,13 @@
 
 <form method="post" use:enhance>
 	<div class="mb-3">
-		<input type="text" name="title" placeholder="Title" class="input input-bordered w-full">
+		<input type="text" name="title" placeholder="Title" class="p-2 border border-zinc-700 rounded-lg bg-zinc-800 w-full">
 	</div>
 	<div class="mb-3">
-		<textarea name="content" class="textarea textarea-bordered w-full h-40 font-mono"></textarea>
+		<textarea name="content" class="p-2 border border-zinc-700 rounded-lg bg-zinc-800 w-full h-40 font-mono"></textarea>
 	</div>
 	<div class="mb-3">
-		<input type="text" name="labels" placeholder="Labels (seperated by comma)" class="input input-bordered w-full">
+		<input type="text" name="labels" placeholder="Labels (seperated by comma)" class="p-2 border border-zinc-700 rounded-lg bg-zinc-800 w-full">
 	</div>
-	<button type="submit" class="btn btn-primary w-full">Save</button>
+	<button type="submit" class="p-2 text-sm border border-zinc-700 rounded-lg bg-zinc-800 hover:bg-zinc-700 w-full">Save</button>
 </form>

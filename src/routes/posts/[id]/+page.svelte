@@ -14,16 +14,16 @@
 </script>
 
 {#if data.post}
-	<div class="breadcrumbs text-sm uppercase mb-4">
-		<ul>
-			<li><a href="/"><Fa icon={faHome} /></a></li>
-			<li><a href="/posts">Posts</a></li>
-			<li><a href="/posts/{data.post?.id}">{data.post?.title}</a></li>
-		</ul>
-	</div>
+	<ul class="inline-flex items-baseline gap-3 text-xs uppercase mb-4">
+		<li><a href="/"><Fa icon={faHome} /></a></li>
+		<li>/</li>
+		<li><a href="/posts">Posts</a></li>
+		<li>/</li>
+		<li><a href="/posts/{data.post?.id}">{data.post?.title}</a></li>
+	</ul>
 
 	<div class="flex justify-between items-center mb-4">
-		<h1 class="font-bold text-2xl">
+		<h1 class="font-bold text-lg">
 			<a href="/posts/{data.post?.id}">{data.post?.title}</a>
 		</h1>
 
@@ -41,7 +41,7 @@
 		{data.post?.publishedAt}
 	</div>
 
-	<div class="prose max-w-none mb-4">
+	<div class="prose text-white/90 max-w-none mb-4">
 		{@html data.post?.content}
 	</div>
 

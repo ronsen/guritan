@@ -15,7 +15,6 @@
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.16",
-    "daisyui": "^4.4.23",
     "google-auth-library": "^9.4.1",
     "googleapis": "^144.0.0",
     "marked": "^14.1.3",

@@ -30,21 +30,19 @@
 	<title>Guritan - Markdown Editor for Blogger</title>
 </svelte:head>
 
-<nav class="navbar bg-base-300">
-	<div class="navbar-start">
-		<a href="/" class="btn btn-ghost text-xl">Guritan</a>
-	</div>
+<nav class="p-3 bg-zinc-800 flex justify-between items-center shadow">
+	<a href="/" class="font-bold text-xl">Guritan</a>
 
 	{#if $page.data.auth}
-		<div class="navbar-center gap-3">
+		<div class="inline-flex items-center gap-3">
 			<a href="/posts" class="btn btn-ghost btn-sm">Posts</a>
 			<a href="/pages" class="btn btn-ghost btn-sm">Pages</a>
 		</div>
 	{/if}
 
-	<div class="navbar-end">
+	<div>
 		{#if $page.data.auth}
-			<div class="inline-flex items-center gap-3">
+			<div class="inline-flex items-center gap-4">
 				<a href="/settings" class="btn btn-ghost"><Fa icon={faGear} /></a>
 				<form method="post" action="/logout">
 					<button type="submit" class="btn btn-ghost"><Fa icon={faSignOut} /></button>

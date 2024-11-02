@@ -7,17 +7,26 @@
 	let dialog: HTMLDialogElement;
 
 	let { action, message }: { action: string; message: string } = $props();
+
+	function close(event: Event) {
+		event.preventDefault();
+		dialog.close();
+	}
+
+	function submit() {
+		dialog.close();
+	}
 </script>
 
 <button onclick={() => dialog.show()}><Fa icon={faTrash }/></button>
 
-<dialog bind:this={dialog} class="modal">
-	<form {action} method="post" class="modal-box" onsubmit={() => dialog.close()} use:enhance>
-		<h3 class="font-bold text-lg">Confirm</h3>
+<dialog bind:this={dialog} class="w-full md:w-2/5 rounded-lg shadow-lg backdrop:backdrop-blur bg-zinc-800 text-white/90 p-4">
+	<form {action} method="post" onsubmit="{submit}"  use:enhance>
+		<h3 class="font-bold">Confirm</h3>
 		<p class="py-4">{@html message}</p>
-		<div class="modal-action">
-			<button class="btn btn-neutral btn-sm" onclick={() => dialog.close()}>No</button>
-			<button type="submit" class="btn btn-error btn-sm">Yes</button>
+		<div>
+			<button class="px-3 py-2 text-sm border border-zinc-700 rounded-lg bg-zinc-800 hover:bg-zinc-700" onclick={close}>No</button>
+			<button type="submit" class="px-3 py-2 text-sm border border-red-800 rounded-lg bg-red-800 hover:bg-red-700">Yes</button>
 		</div>
 	</form>
 </dialog>
