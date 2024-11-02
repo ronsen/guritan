@@ -35,21 +35,21 @@
 
 	{#if $page.data.auth}
 		<div class="inline-flex items-center gap-3">
-			<a href="/posts" class="btn btn-ghost btn-sm">Posts</a>
-			<a href="/pages" class="btn btn-ghost btn-sm">Pages</a>
+			<a href="/posts">Posts</a>
+			<a href="/pages">Pages</a>
 		</div>
 	{/if}
 
 	<div>
 		{#if $page.data.auth}
 			<div class="inline-flex items-center gap-4">
-				<a href="/settings" class="btn btn-ghost"><Fa icon={faGear} /></a>
+				<a href="/settings"><Fa icon={faGear} /></a>
 				<form method="post" action="/logout">
-					<button type="submit" class="btn btn-ghost"><Fa icon={faSignOut} /></button>
+					<button type="submit"><Fa icon={faSignOut} /></button>
 				</form>
 			</div>
 		{:else}
-			<a href="/oauth" class="btn btn-ghost"><Fa icon={faSignIn} /></a>
+			<a href="/oauth"><Fa icon={faSignIn} /></a>
 		{/if}
 	</div>
 </nav>
