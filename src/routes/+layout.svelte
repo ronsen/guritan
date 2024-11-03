@@ -44,9 +44,7 @@
 		{#if $page.data.auth}
 			<div class="inline-flex items-center gap-4">
 				<a href="/settings"><Fa icon={faGear} /></a>
-				<form method="post" action="/logout">
-					<button type="submit"><Fa icon={faSignOut} /></button>
-				</form>
+				<button type="button"><Fa icon={faSignOut} /></button>
 			</div>
 		{:else}
 			<a href="/oauth"><Fa icon={faSignIn} /></a>
