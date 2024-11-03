@@ -17,8 +17,15 @@
 
 <form method="post" use:enhance>
 	<div class="mb-3">
-		<input type="text" name="blog" value={data.blogId} placeholder="Blog ID" class="p-2 border border-zinc-700 rounded-lg bg-zinc-800 w-full">
+		<input type="text"
+			   name="blog"
+			   value={data.blogId}
+			   placeholder="Blog ID"
+			   class="rounded-lg bg-zinc-800 w-full">
 		<div class="mt-1 text-xs text-white/80">Blog ID</div>
 	</div>
-	<button type="submit" class="p-2 text-sm border border-zinc-700 rounded-lg bg-zinc-800 hover:bg-zinc-700 w-full">Save</button>
+	<button
+			type="submit"
+			class="p-2 text-sm border border-zinc-700 rounded-lg bg-zinc-800 hover:bg-zinc-700 w-full"
+	>Save</button>
 </form>

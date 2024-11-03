@@ -22,7 +22,7 @@
 
 <dialog
 	bind:this={dialog}
-	class="w-3/4 md:w-2/5 border border-zinc-700 rounded-lg shadow-lg bg-zinc-900 text-white/90"
+	class="w-3/4 md:w-2/5 border border-zinc-700 rounded-lg shadow-lg bg-zinc-900 text-white/90 backdrop-blur"
 >
 	<form {action} method="post" onsubmit={submit} use:enhance>
 		<div class="p-4">

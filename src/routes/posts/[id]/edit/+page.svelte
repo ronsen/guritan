@@ -30,14 +30,14 @@
 				type="text"
 				name="title"
 				value={data.post?.title}
-				class="p-2 border border-zinc-700 rounded-lg bg-zinc-800 w-full"
+				class="rounded-lg bg-zinc-800 w-full"
 			/>
 		</div>
 
 		<div class="mb-3">
 			<textarea
 				name="content"
-				class="p-2 border border-zinc-700 rounded-lg bg-zinc-800 w-full h-96 text-sm font-mono"
+				class="rounded-lg bg-zinc-800 w-full h-96 text-sm font-mono"
 				>{data.post?.contentToMarkdown}</textarea
 			>
 		</div>
@@ -47,7 +47,7 @@
 				type="text"
 				name="labels"
 				value={data.post?.labels ? data.post?.labels : ""}
-				class="p-2 border border-zinc-700 rounded-lg bg-zinc-800 w-full"
+				class="rounded-lg bg-zinc-800 w-full"
 			/>
 			<div class="text-xs mt-1">Seperated by comma</div>
 		</div>
