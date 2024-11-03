@@ -31,7 +31,9 @@
 		<div class="overflow-x-auto">
 			<table class="table-auto w-full">
 				<thead>
-					<tr class="uppercase text-xs text-left border-b border-zinc-800">
+					<tr
+						class="uppercase text-xs text-left border-b border-zinc-800"
+					>
 						<th class="p-2">Title</th>
 						<th class="w-10 p-2">&nbsp;</th>
 					</tr>
@@ -39,11 +41,17 @@
 				<tbody>
 					{#each data.posts?.items as post}
 						<tr class="border-b border-zinc-800">
-							<td class="p-2"><a href="/posts/{post.id}">{post.title}</a></td>
+							<td class="p-2"
+								><a href="/posts/{post.id}">{post.title}</a></td
+							>
 							<td class="p-2">
 								<div class="inline-flex gap-3">
-									<a href={post.url} target="_blank"><Fa icon={faLink} /></a>
-									<a href="/posts/{post.id}/edit"><Fa icon={faPencil} /></a>
+									<a href={post.url} target="_blank"
+										><Fa icon={faLink} /></a
+									>
+									<a href="/posts/{post.id}/edit"
+										><Fa icon={faPencil} /></a
+									>
 									<Delete
 										action="/posts/{post.id}/delete"
 										message="Delete this post: {post.title}?"

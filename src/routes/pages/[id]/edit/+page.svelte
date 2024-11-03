@@ -26,11 +26,24 @@
 
 	<form method="post" use:enhance>
 		<div class="mb-3">
-			<input type="text" name="title" value={data.page?.title} class="p-2 border border-zinc-700 rounded-lg bg-zinc-800 w-full">
+			<input
+				type="text"
+				name="title"
+				value={data.page?.title}
+				class="p-2 border border-zinc-700 rounded-lg bg-zinc-800 w-full"
+			/>
 		</div>
 		<div class="mb-3">
-			<textarea name="content" class="p-2 border border-zinc-700 rounded-lg bg-zinc-800 w-full h-40 font-mono">{data.page?.contentToMarkdown}</textarea>
+			<textarea
+				name="content"
+				class="p-2 border border-zinc-700 rounded-lg bg-zinc-800 w-full h-40 font-mono"
+				>{data.page?.contentToMarkdown}</textarea
+			>
 		</div>
-		<button type="submit" class="p-2 text-sm border border-zinc-700 rounded-lg bg-zinc-800 hover:bg-zinc-700 w-full">Update</button>
+		<button
+			type="submit"
+			class="p-2 text-sm border border-zinc-700 rounded-lg bg-zinc-800 hover:bg-zinc-700 w-full"
+			>Update</button
+		>
 	</form>
 {/if}
