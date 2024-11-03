@@ -1,15 +1,15 @@
-import type { Actions, PageServerLoad } from './$types';
-import { fail, redirect } from '@sveltejs/kit';
-import { NodeHtmlMarkdown } from 'node-html-markdown';
-import { marked } from "marked";
+import type {Actions, PageServerLoad} from './$types';
+import {fail, redirect} from '@sveltejs/kit';
+import {NodeHtmlMarkdown} from 'node-html-markdown';
+import {marked} from 'marked';
 import Blogger from '$lib';
 
-export const load = (async ({ params, cookies }) => {
+export const load = (async ({params, cookies}) => {
 	const refreshToken = cookies.get('refresh_token');
 	const blogId = cookies.get('blog_id');
 
 	const blogger = Blogger.getInstance(refreshToken!);
-	const response = await blogger.posts.get({ blogId, postId: params.id });
+	const response = await blogger.posts.get({blogId, postId: params.id});
 	const post = response.data;
 
 	const nhm = new NodeHtmlMarkdown();
@@ -17,26 +17,30 @@ export const load = (async ({ params, cookies }) => {
 	return {
 		post: {
 			...post,
-			'contentToMarkdown': post?.content ? nhm.translate(post!.content as string) : '',
-		}
+			contentToMarkdown: post?.content
+				? nhm.translate(post!.content as string)
+				: '',
+		},
 	};
 }) satisfies PageServerLoad;
 
 export const actions = {
-	default: async ({ request, cookies, params }) => {
-		const { title, content, labels } = Object.fromEntries(await request.formData()) as Record<string, string>;
+	default: async ({request, cookies, params}) => {
+		const {title, content, labels} = Object.fromEntries(
+			await request.formData()
+		) as Record<string, string>;
 
 		if (title.length == 0) {
 			return fail(400, {
 				error: true,
-				message: 'Field <strong>Title</strong> cannot be blank.'
+				message: 'Field <strong>Title</strong> cannot be blank.',
 			});
 		}
 
 		if (content.length == 0) {
 			return fail(400, {
 				error: true,
-				message: 'Field <strong>Content</strong> cannot be blank.'
+				message: 'Field <strong>Content</strong> cannot be blank.',
 			});
 		}
 
@@ -52,8 +56,8 @@ export const actions = {
 					id: params.id,
 					title,
 					content: await marked.parse(content),
-					labels: labels.split(',')
-				}
+					labels: labels.split(','),
+				},
 			});
 		} catch (e: unknown) {
 			let message = '';
@@ -64,9 +68,9 @@ export const actions = {
 				message = e.message;
 			}
 
-			return fail(400, { error: true, message });
+			return fail(400, {error: true, message});
 		}
 
 		redirect(302, '/posts');
-	}
+	},
 } satisfies Actions;

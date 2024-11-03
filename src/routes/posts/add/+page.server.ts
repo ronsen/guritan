@@ -1,23 +1,25 @@
-import type { Actions } from './$types';
-import { fail, redirect } from '@sveltejs/kit';
-import { marked } from "marked";
+import type {Actions} from './$types';
+import {fail, redirect} from '@sveltejs/kit';
+import {marked} from 'marked';
 import Blogger from '$lib';
 
 export const actions = {
-	default: async ({ request, cookies }) => {
-		const { title, content, labels } = Object.fromEntries(await request.formData()) as Record<string, string>;
+	default: async ({request, cookies}) => {
+		const {title, content, labels} = Object.fromEntries(
+			await request.formData()
+		) as Record<string, string>;
 
 		if (title.length == 0) {
 			return fail(400, {
 				error: true,
-				message: 'Field <strong>Title</strong> cannot be blank.'
+				message: 'Field <strong>Title</strong> cannot be blank.',
 			});
 		}
 
 		if (content.length == 0) {
 			return fail(400, {
 				error: true,
-				message: 'Field <strong>Content</strong> cannot be blank.'
+				message: 'Field <strong>Content</strong> cannot be blank.',
 			});
 		}
 
@@ -31,8 +33,8 @@ export const actions = {
 				requestBody: {
 					title,
 					content: await marked.parse(content),
-					labels: labels.length > 0 ? labels.split(',') : []
-				}
+					labels: labels.length > 0 ? labels.split(',') : [],
+				},
 			});
 		} catch (e: unknown) {
 			let message = '';
@@ -43,9 +45,9 @@ export const actions = {
 				message = e.message;
 			}
 
-			return fail(400, { error: true, message });
+			return fail(400, {error: true, message});
 		}
 
 		redirect(302, '/posts');
-	}
+	},
 } satisfies Actions;

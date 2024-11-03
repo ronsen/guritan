@@ -1,15 +1,15 @@
 <script lang="ts">
-	import type { ActionData } from "./$types";
-	import { enhance } from "$app/forms";
-	import Alert from "$lib/components/alert.svelte";
+	import type {ActionData} from './$types';
+	import {enhance} from '$app/forms';
+	import Alert from '$lib/components/alert.svelte';
 
-	import Fa from "svelte-fa";
-	import { faHome } from "@fortawesome/free-solid-svg-icons";
+	import Fa from 'svelte-fa';
+	import {faHome} from '@fortawesome/free-solid-svg-icons';
 
-	let { form }: { form: ActionData } = $props();
+	let {form}: {form: ActionData} = $props();
 </script>
 
-<ul class="inline-flex items-baseline gap-3 text-xs uppercase mb-4">
+<ul class="mb-4 inline-flex items-baseline gap-3 text-xs uppercase">
 	<li><a href="/"><Fa icon={faHome} /></a></li>
 	<li>/</li>
 	<li><a href="/pages">Pages</a></li>
@@ -27,18 +27,16 @@
 			type="text"
 			name="title"
 			placeholder="Title"
-			class="rounded-lg bg-zinc-800 w-full"
-		/>
+			class="w-full rounded-lg bg-zinc-800" />
 	</div>
 	<div class="mb-3">
 		<textarea
 			name="content"
-			class="rounded-lg bg-zinc-800 w-full h-96 text-sm font-mono"
+			class="h-96 w-full rounded-lg bg-zinc-800 font-mono text-sm"
 		></textarea>
 	</div>
 	<button
 		type="submit"
-		class="p-2 text-sm border border-zinc-700 rounded-lg bg-zinc-800 hover:bg-zinc-700 w-full"
-		>Save</button
-	>
+		class="w-full rounded-lg border border-zinc-700 bg-zinc-800 p-2 text-sm hover:bg-zinc-700"
+		>Save</button>
 </form>

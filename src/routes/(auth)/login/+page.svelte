@@ -3,7 +3,5 @@
 		><img
 			src="/google-signin.png"
 			alt="Sign in with Google"
-			class="w-64"
-		/></a
-	>
+			class="w-64" /></a>
 </div>

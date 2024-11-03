@@ -1,21 +1,21 @@
 <script lang="ts">
-	import type { Snippet } from "svelte";
-	import { page, navigating } from "$app/stores";
-	import NProgress from "nprogress";
+	import type {Snippet} from 'svelte';
+	import {page, navigating} from '$app/stores';
+	import NProgress from 'nprogress';
 
-	import Fa from "svelte-fa";
+	import Fa from 'svelte-fa';
 	import {
 		faGear,
 		faSignIn,
 		faSignOut,
-	} from "@fortawesome/free-solid-svg-icons";
+	} from '@fortawesome/free-solid-svg-icons';
 
-	import "../app.css";
-	import "nprogress/nprogress.css";
+	import '../app.css';
+	import 'nprogress/nprogress.css';
 
-	let { children }: { children: Snippet } = $props();
+	let {children}: {children: Snippet} = $props();
 
-	NProgress.configure({ minimum: 0.16 });
+	NProgress.configure({minimum: 0.16});
 
 	$effect(() => {
 		if ($navigating) {
@@ -23,15 +23,15 @@
 		} else {
 			NProgress.done();
 		}
-	})
+	});
 </script>
 
 <svelte:head>
 	<title>Guritan - Markdown Editor for Blogger</title>
 </svelte:head>
 
-<nav class="p-3 bg-zinc-800 flex justify-between items-center shadow">
-	<a href="/" class="font-bold text-xl">Guritan</a>
+<nav class="flex items-center justify-between bg-zinc-800 p-3 shadow">
+	<a href="/" class="text-xl font-bold">Guritan</a>
 
 	{#if $page.data.auth}
 		<div class="inline-flex items-center gap-3">
@@ -52,6 +52,6 @@
 	</div>
 </nav>
 
-<main class="container md:w-[800px] mx-auto px-6 py-10">
+<main class="container mx-auto px-6 py-10 md:w-[800px]">
 	{@render children()}
 </main>

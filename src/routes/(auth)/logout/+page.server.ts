@@ -1,13 +1,13 @@
-import type { Actions } from './$types';
-import { redirect } from '@sveltejs/kit';
+import type {Actions} from './$types';
+import {redirect} from '@sveltejs/kit';
 
 export const actions = {
-	default: async ({ cookies }) => {
+	default: async ({cookies}) => {
 		cookies.set('refresh_token', '', {
 			path: '/',
-			expires: new Date(0)
+			expires: new Date(0),
 		});
 
 		redirect(302, '/');
-	}
+	},
 } satisfies Actions;

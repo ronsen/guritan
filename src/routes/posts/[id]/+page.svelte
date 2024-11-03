@@ -1,20 +1,20 @@
 <script lang="ts">
-	import type { PageServerData } from "./$types";
-	import Delete from "$lib/components/delete.svelte";
+	import type {PageServerData} from './$types';
+	import Delete from '$lib/components/delete.svelte';
 
-	import Fa from "svelte-fa";
+	import Fa from 'svelte-fa';
 	import {
 		faHome,
 		faLink,
 		faPencil,
 		faTrash,
-	} from "@fortawesome/free-solid-svg-icons";
+	} from '@fortawesome/free-solid-svg-icons';
 
-	let { data }: { data: PageServerData } = $props();
+	let {data}: {data: PageServerData} = $props();
 </script>
 
 {#if data.post}
-	<ul class="inline-flex items-baseline gap-3 text-xs uppercase mb-4">
+	<ul class="mb-4 inline-flex items-baseline gap-3 text-xs uppercase">
 		<li><a href="/"><Fa icon={faHome} /></a></li>
 		<li>/</li>
 		<li><a href="/posts">Posts</a></li>
@@ -22,8 +22,8 @@
 		<li><a href="/posts/{data.post?.id}">{data.post?.title}</a></li>
 	</ul>
 
-	<div class="flex justify-between items-center mb-4">
-		<h1 class="font-bold text-lg">
+	<div class="mb-4 flex items-center justify-between">
+		<h1 class="text-lg font-bold">
 			<a href="/posts/{data.post?.id}">{data.post?.title}</a>
 		</h1>
 
@@ -32,16 +32,15 @@
 			<a href="/posts/{data.post?.id}/edit"><Fa icon={faPencil} /></a>
 			<Delete
 				action="/posts/{data.post?.id}/delete"
-				message="Delete this post?"
-			/>
+				message="Delete this post?" />
 		</div>
 	</div>
 
-	<div class="text-sm mb-4">
+	<div class="mb-4 text-sm">
 		{data.post?.publishedAt}
 	</div>
 
-	<div class="prose prose-invert max-w-none mb-4">
+	<div class="prose prose-invert mb-4 max-w-none">
 		{@html data.post?.content}
 	</div>
 
