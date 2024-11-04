@@ -1,15 +1,15 @@
-import {fail, redirect} from '@sveltejs/kit';
-import type {PageServerLoad} from './$types';
+import { fail, redirect } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 
-export const load = (async ({cookies}) => {
+export const load = (async ({ cookies }) => {
 	const blogId = cookies.get('blog_id') ?? '';
 
-	return {blogId};
+	return { blogId };
 }) satisfies PageServerLoad;
 
 export const actions = {
-	default: async ({request, cookies}) => {
-		const {blog} = Object.fromEntries(await request.formData()) as Record<
+	default: async ({ request, cookies }) => {
+		const { blog } = Object.fromEntries(await request.formData()) as Record<
 			string,
 			string
 		>;

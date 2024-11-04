@@ -1,8 +1,8 @@
-import type {LayoutServerLoad} from './$types';
+import type { LayoutServerLoad } from './$types';
 
-export const load = (async ({cookies}) => {
+export const load = (async ({ cookies }) => {
 	const refreshToken = cookies.get('refresh_token');
 	const auth = !!refreshToken;
 
-	return {auth};
+	return { auth };
 }) satisfies LayoutServerLoad;

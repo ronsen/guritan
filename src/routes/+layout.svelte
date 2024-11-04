@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type {Snippet} from 'svelte';
-	import {page, navigating} from '$app/stores';
+	import type { Snippet } from 'svelte';
+	import { page, navigating } from '$app/stores';
 	import NProgress from 'nprogress';
 
 	import Fa from 'svelte-fa';
@@ -13,9 +13,9 @@
 	import '../app.css';
 	import 'nprogress/nprogress.css';
 
-	let {children}: {children: Snippet} = $props();
+	let { children }: { children: Snippet } = $props();
 
-	NProgress.configure({minimum: 0.16});
+	NProgress.configure({ minimum: 0.16 });
 
 	$effect(() => {
 		if ($navigating) {

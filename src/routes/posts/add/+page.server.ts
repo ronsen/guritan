@@ -1,11 +1,11 @@
-import type {Actions} from './$types';
-import {fail, redirect} from '@sveltejs/kit';
-import {marked} from 'marked';
+import type { Actions } from './$types';
+import { fail, redirect } from '@sveltejs/kit';
+import { marked } from 'marked';
 import Blogger from '$lib';
 
 export const actions = {
-	default: async ({request, cookies}) => {
-		const {title, content, labels} = Object.fromEntries(
+	default: async ({ request, cookies }) => {
+		const { title, content, labels } = Object.fromEntries(
 			await request.formData()
 		) as Record<string, string>;
 
@@ -45,7 +45,7 @@ export const actions = {
 				message = e.message;
 			}
 
-			return fail(400, {error: true, message});
+			return fail(400, { error: true, message });
 		}
 
 		redirect(302, '/posts');

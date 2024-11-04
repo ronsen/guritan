@@ -1,11 +1,15 @@
 <script lang="ts">
-	import type {PageServerData} from './$types';
+	import type { PageServerData } from './$types';
 	import Delete from '$lib/components/delete.svelte';
 
 	import Fa from 'svelte-fa';
-	import {faHome, faLink, faPencil} from '@fortawesome/free-solid-svg-icons';
+	import {
+		faHome,
+		faLink,
+		faPencil,
+	} from '@fortawesome/free-solid-svg-icons';
 
-	let {data}: {data: PageServerData} = $props();
+	let { data }: { data: PageServerData } = $props();
 </script>
 
 {#if data.page}

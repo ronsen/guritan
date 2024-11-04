@@ -1,12 +1,12 @@
 <script lang="ts">
-	import {enhance} from '$app/forms';
+	import { enhance } from '$app/forms';
 
 	import Fa from 'svelte-fa';
-	import {faTrash} from '@fortawesome/free-solid-svg-icons';
+	import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 	let dialog: HTMLDialogElement;
 
-	let {action, message}: {action: string; message: string} = $props();
+	let { action, message }: { action: string; message: string } = $props();
 
 	function close(event: Event) {
 		event.preventDefault();

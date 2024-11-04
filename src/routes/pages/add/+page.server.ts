@@ -1,6 +1,6 @@
-import type {Actions, PageServerLoad} from './$types';
-import {fail, redirect} from '@sveltejs/kit';
-import {marked} from 'marked';
+import type { Actions, PageServerLoad } from './$types';
+import { fail, redirect } from '@sveltejs/kit';
+import { marked } from 'marked';
 import Blogger from '$lib';
 
 export const load = (async () => {
@@ -8,8 +8,8 @@ export const load = (async () => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-	default: async ({request, cookies}) => {
-		const {title, content} = Object.fromEntries(
+	default: async ({ request, cookies }) => {
+		const { title, content } = Object.fromEntries(
 			await request.formData()
 		) as Record<string, string>;
 
@@ -49,7 +49,7 @@ export const actions = {
 				message = e.message;
 			}
 
-			return fail(400, {error: true, message});
+			return fail(400, { error: true, message });
 		}
 
 		redirect(302, '/pages');

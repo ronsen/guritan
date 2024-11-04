@@ -1,7 +1,7 @@
-import {redirect} from '@sveltejs/kit';
-import type {RequestHandler} from './$types';
-import {OAuth2Client} from 'google-auth-library';
-import {CLIENT_ID, CLIENT_SECRET, REDIRECT_URI} from '$env/static/private';
+import { redirect } from '@sveltejs/kit';
+import type { RequestHandler } from './$types';
+import { OAuth2Client } from 'google-auth-library';
+import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } from '$env/static/private';
 
 export const GET = (async () => {
 	const oAuth2Client = new OAuth2Client(

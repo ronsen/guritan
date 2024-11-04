@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {PageServerData} from './$types';
-	import {enhance} from '$app/forms';
+	import type { PageServerData } from './$types';
+	import { enhance } from '$app/forms';
 
 	import Fa from 'svelte-fa';
-	import {faHome} from '@fortawesome/free-solid-svg-icons';
+	import { faHome } from '@fortawesome/free-solid-svg-icons';
 
-	let {data}: {data: PageServerData} = $props();
+	let { data }: { data: PageServerData } = $props();
 </script>
 
 <ul class="mb-4 inline-flex items-baseline gap-3 text-xs uppercase">

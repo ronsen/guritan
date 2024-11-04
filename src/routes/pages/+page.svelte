@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {PageServerData} from './$types';
+	import type { PageServerData } from './$types';
 	import Alert from '$lib/components/alert.svelte';
 	import Delete from '$lib/components/delete.svelte';
 
@@ -11,7 +11,7 @@
 		faPencil,
 	} from '@fortawesome/free-solid-svg-icons';
 
-	let {data}: {data: PageServerData} = $props();
+	let { data }: { data: PageServerData } = $props();
 </script>
 
 <div class="mb-4 flex items-center justify-between">

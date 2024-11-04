@@ -1,5 +1,5 @@
-import {blogger_v3, google} from 'googleapis';
-import {CLIENT_ID, CLIENT_SECRET, REDIRECT_URI} from '$env/static/private';
+import { blogger_v3, google } from 'googleapis';
+import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } from '$env/static/private';
 
 class Blogger {
 	private static instance: blogger_v3.Blogger | null = null;
@@ -13,7 +13,7 @@ class Blogger {
 				CLIENT_SECRET,
 				REDIRECT_URI
 			);
-			oauth2client.setCredentials({refresh_token: refreshToken});
+			oauth2client.setCredentials({ refresh_token: refreshToken });
 
 			Blogger.instance = google.blogger({
 				version: 'v3',

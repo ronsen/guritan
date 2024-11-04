@@ -1,6 +1,6 @@
-import {redirect, type Handle} from '@sveltejs/kit';
+import { redirect, type Handle } from '@sveltejs/kit';
 
-export const handle: Handle = async ({event, resolve}) => {
+export const handle: Handle = async ({ event, resolve }) => {
 	const refreshToken = event.cookies.get('refresh_token');
 	const blogId = event.cookies.get('blog_id');
 
