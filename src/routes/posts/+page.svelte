@@ -14,8 +14,8 @@
 	let { data }: { data: PageServerData } = $props();
 </script>
 
-<div class="mb-4 flex justify-between">
-	<ul class="inline-flex items-baseline gap-3 text-xs uppercase">
+<div class="mb-4 flex items-center justify-between">
+	<ul class="inline-flex items-center gap-3 text-xs uppercase">
 		<li><a href="/"><Fa icon={faHome} /></a></li>
 		<li>/</li>
 		<li><a href="/posts">Posts</a></li>

@@ -14,7 +14,7 @@
 </script>
 
 {#if data.post}
-	<ul class="mb-4 inline-flex items-baseline gap-3 text-xs uppercase">
+	<ul class="mb-4 inline-flex items-center gap-3 text-xs uppercase">
 		<li><a href="/"><Fa icon={faHome} /></a></li>
 		<li>/</li>
 		<li><a href="/posts">Posts</a></li>
