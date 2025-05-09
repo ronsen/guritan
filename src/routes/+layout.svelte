@@ -30,7 +30,7 @@
 	<title>Guritan - Markdown Editor for Blogger</title>
 </svelte:head>
 
-<nav class="flex items-center justify-between bg-zinc-800 p-3 shadow">
+<nav class="flex items-center justify-between bg-zinc-800 p-3 shadow-sm">
 	<a href="/" class="text-xl font-bold">Guritan</a>
 
 	{#if $page.data.auth}
