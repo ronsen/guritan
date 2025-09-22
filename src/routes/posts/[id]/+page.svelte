@@ -12,12 +12,16 @@
 		<li>/</li>
 		<li><a href="/posts">Posts</a></li>
 		<li>/</li>
-		<li><a href="/posts/{data.post?.id}">{data.post?.title}</a></li>
+		<li>
+			<a href="/posts/{data.post?.id}"
+				>{data.post?.title ? data.post?.title : ['[No Title]']}</a>
+		</li>
 	</ul>
 
 	<div class="mb-4 flex items-center justify-between">
 		<h1 class="text-lg font-bold">
-			<a href="/posts/{data.post?.id}">{data.post?.title}</a>
+			<a href="/posts/{data.post?.id}"
+				>{data.post?.title ? data.post?.title : '[No Title]'}</a>
 		</h1>
 
 		<div class="inline-flex gap-3">

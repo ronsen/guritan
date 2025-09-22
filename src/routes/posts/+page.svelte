@@ -35,7 +35,7 @@
 						<tr class="border-b border-zinc-800">
 							<td class="p-2"
 								><a href="/posts/{post.id}"
-									>{post.title ? post.title : 'No Title'}</a
+									>{post.title ? post.title : '[No Title]'}</a
 								></td>
 							<td class="p-2">
 								<div class="inline-flex gap-3">
@@ -47,7 +47,7 @@
 										action="/posts/{post.id}/delete"
 										message="Delete this post: {post.title
 											? post.title
-											: 'No Title'}?" />
+											: '[No Title]'}?" />
 								</div>
 							</td>
 						</tr>

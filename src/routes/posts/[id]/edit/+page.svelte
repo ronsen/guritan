@@ -14,7 +14,8 @@
 		<li><a href="/posts">Posts</a></li>
 		<li>/</li>
 		<li>
-			<a href="/posts/{data.post?.id}/edit">{data.post?.title}</a>
+			<a href="/posts/{data.post?.id}/edit"
+				>{data.post?.title ? data.post?.title : ['[No Title]']}</a>
 		</li>
 	</ul>
 
