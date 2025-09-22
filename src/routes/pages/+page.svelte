@@ -1,27 +1,20 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
+	import { ExternalLink, House, Pencil, Plus } from '@lucide/svelte';
 	import Alert from '$lib/components/alert.svelte';
 	import Delete from '$lib/components/delete.svelte';
-
-	import Fa from 'svelte-fa';
-	import {
-		faHome,
-		faAdd,
-		faLink,
-		faPencil,
-	} from '@fortawesome/free-solid-svg-icons';
 
 	let { data }: { data: PageServerData } = $props();
 </script>
 
 <div class="mb-4 flex items-center justify-between">
 	<ul class="inline-flex items-center gap-3 text-xs uppercase">
-		<li><a href="/"><Fa icon={faHome} /></a></li>
+		<li><a href="/"><House size={16} /></a></li>
 		<li>/</li>
 		<li><a href="/pages">Pages</a></li>
 	</ul>
 
-	<a href="/pages/add" class="btn btn-ghost"><Fa icon={faAdd} /></a>
+	<a href="/pages/add" class="btn btn-ghost"><Plus size={16} /></a>
 </div>
 
 {#if data.pages}
@@ -46,9 +39,9 @@
 							<td class="p-2">
 								<div class="inline-flex gap-3">
 									<a href={page.url} target="_blank"
-										><Fa icon={faLink} /></a>
+										><ExternalLink size={16} /></a>
 									<a href="/pages/{page.id}/edit"
-										><Fa icon={faPencil} /></a>
+										><Pencil size={16} /></a>
 									<Delete
 										action="/pages/{page.id}/delete"
 										message="Delete this page: {page.title}?" />

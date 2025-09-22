@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-
-	import Fa from 'svelte-fa';
-	import { faTrash } from '@fortawesome/free-solid-svg-icons';
+	import { Trash } from '@lucide/svelte';
 
 	let dialog: HTMLDialogElement;
 
@@ -18,11 +16,11 @@
 	}
 </script>
 
-<button onclick={() => dialog.show()}><Fa icon={faTrash} /></button>
+<button onclick={() => dialog.show()}><Trash size={16} /></button>
 
 <dialog
 	bind:this={dialog}
-	class="w-3/4 rounded-lg border border-zinc-700 bg-zinc-900 text-white/90 shadow-lg backdrop-blur-sm md:w-2/5">
+	class="m-auto w-3/4 rounded-lg border border-zinc-700 bg-zinc-900 text-white/90 shadow-lg backdrop-blur-sm md:w-2/5">
 	<form {action} method="post" onsubmit={submit} use:enhance>
 		<div class="p-4">
 			<h3 class="mb-3 font-bold">Confirm</h3>

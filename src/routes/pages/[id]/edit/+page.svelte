@@ -1,17 +1,15 @@
 <script lang="ts">
 	import type { ActionData, PageServerData } from './$types';
 	import { enhance } from '$app/forms';
+	import { House } from '@lucide/svelte';
 	import Alert from '$lib/components/alert.svelte';
-
-	import Fa from 'svelte-fa';
-	import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 	let { data, form }: { data: PageServerData; form: ActionData } = $props();
 </script>
 
 {#if data.page}
 	<ul class="mb-4 inline-flex items-center gap-3 text-xs uppercase">
-		<li><a href="/"><Fa icon={faHome} /></a></li>
+		<li><a href="/"><House size={16} /></a></li>
 		<li>/</li>
 		<li><a href="/pages">Pages</a></li>
 		<li>/</li>

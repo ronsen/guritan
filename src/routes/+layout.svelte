@@ -1,29 +1,11 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { page, navigating } from '$app/stores';
-	import NProgress from 'nprogress';
-
-	import Fa from 'svelte-fa';
-	import {
-		faGear,
-		faSignIn,
-		faSignOut,
-	} from '@fortawesome/free-solid-svg-icons';
+	import { page } from '$app/state';
+	import { LogIn, LogOut, Settings } from '@lucide/svelte';
 
 	import '../app.css';
-	import 'nprogress/nprogress.css';
 
 	let { children }: { children: Snippet } = $props();
-
-	NProgress.configure({ minimum: 0.16 });
-
-	$effect(() => {
-		if ($navigating) {
-			NProgress.start();
-		} else {
-			NProgress.done();
-		}
-	});
 </script>
 
 <svelte:head>
@@ -33,7 +15,7 @@
 <nav class="flex items-center justify-between bg-zinc-800 p-3 shadow-sm">
 	<a href="/" class="text-xl font-bold">Guritan</a>
 
-	{#if $page.data.auth}
+	{#if page.data.auth}
 		<div class="inline-flex items-center gap-3">
 			<a href="/posts">Posts</a>
 			<a href="/pages">Pages</a>
@@ -41,15 +23,15 @@
 	{/if}
 
 	<div>
-		{#if $page.data.auth}
+		{#if page.data.auth}
 			<div class="inline-flex items-center gap-4">
-				<a href="/settings"><Fa icon={faGear} /></a>
+				<a href="/settings"><Settings size={16} /></a>
 				<form action="/logout" method="post" class="flex">
-					<button type="submit"><Fa icon={faSignOut} /></button>
+					<button type="submit"><LogOut size={16} /></button>
 				</form>
 			</div>
 		{:else}
-			<a href="/oauth"><Fa icon={faSignIn} /></a>
+			<a href="/oauth"><LogIn size={16} /></a>
 		{/if}
 	</div>
 </nav>

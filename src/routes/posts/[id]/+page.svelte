@@ -1,21 +1,14 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
+	import { ExternalLink, House, Pencil } from '@lucide/svelte';
 	import Delete from '$lib/components/delete.svelte';
-
-	import Fa from 'svelte-fa';
-	import {
-		faHome,
-		faLink,
-		faPencil,
-		faTrash,
-	} from '@fortawesome/free-solid-svg-icons';
 
 	let { data }: { data: PageServerData } = $props();
 </script>
 
 {#if data.post}
 	<ul class="mb-4 inline-flex items-center gap-3 text-xs uppercase">
-		<li><a href="/"><Fa icon={faHome} /></a></li>
+		<li><a href="/"><House size={16} /></a></li>
 		<li>/</li>
 		<li><a href="/posts">Posts</a></li>
 		<li>/</li>
@@ -28,8 +21,9 @@
 		</h1>
 
 		<div class="inline-flex gap-3">
-			<a href={data.post?.url} target="_blank"><Fa icon={faLink} /></a>
-			<a href="/posts/{data.post?.id}/edit"><Fa icon={faPencil} /></a>
+			<a href={data.post?.url} target="_blank"
+				><ExternalLink size={16} /></a>
+			<a href="/posts/{data.post?.id}/edit"><Pencil size={16} /></a>
 			<Delete
 				action="/posts/{data.post?.id}/delete"
 				message="Delete this post?" />
