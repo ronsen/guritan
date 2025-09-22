@@ -30,13 +30,6 @@ export const actions = {
 			await request.formData()
 		) as Record<string, string>;
 
-		if (title.length == 0) {
-			return fail(400, {
-				error: true,
-				message: 'Field <strong>Title</strong> cannot be blank.',
-			});
-		}
-
 		if (content.length == 0) {
 			return fail(400, {
 				error: true,
