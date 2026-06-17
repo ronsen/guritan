@@ -30,5 +30,5 @@ export const GET = (async ({ url, cookies }) => {
 		console.error(err);
 	}
 
-	redirect(303, '/');
+	throw redirect(303, '/');
 }) satisfies RequestHandler;

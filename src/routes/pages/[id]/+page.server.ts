@@ -23,6 +23,6 @@ export const load = (async ({ params, cookies }) => {
 			},
 		};
 	} catch (e: unknown) {
-		redirect(302, '/pages');
+		throw redirect(302, '/pages');
 	}
 }) satisfies PageServerLoad;

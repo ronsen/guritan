@@ -70,6 +70,6 @@ export const actions = {
 			return fail(400, { error: true, message });
 		}
 
-		redirect(302, '/pages');
+		throw redirect(302, '/pages');
 	},
 } satisfies Actions;

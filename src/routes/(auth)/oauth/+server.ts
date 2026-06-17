@@ -22,5 +22,5 @@ export const GET = (async () => {
 		prompt: 'consent',
 	});
 
-	redirect(302, authorizeUrl);
+	throw redirect(302, authorizeUrl);
 }) satisfies RequestHandler;

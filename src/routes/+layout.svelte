@@ -3,7 +3,7 @@
 	import { page } from '$app/state';
 	import { LogIn, LogOut, Settings } from '@lucide/svelte';
 
-	import '../app.css';
+	import './layout.css';
 
 	let { children }: { children: Snippet } = $props();
 </script>

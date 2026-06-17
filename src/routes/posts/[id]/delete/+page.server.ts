@@ -16,6 +16,6 @@ export const actions = {
 			});
 		} catch (e: unknown) {}
 
-		redirect(302, '/posts');
+		throw redirect(302, '/posts');
 	},
 } satisfies Actions;
